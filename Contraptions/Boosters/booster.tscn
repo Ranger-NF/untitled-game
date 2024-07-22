@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfcyhd2ipn5fy"]
+
+[ext_resource type="Texture2D" uid="uid://8qvojhm7mqj3" path="res://Contraptions/Boosters/booster.svg" id="1_xutxf"]
+
+[sub_resource type="Curve" id="Curve_aascv"]
+max_value = 10.0
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_mo50q"]
+offsets = PackedFloat32Array(0, 0.464286, 1)
+colors = PackedColorArray(1, 0.278431, 0, 1, 0.953102, 0.952191, 0, 1, 0, 0, 0, 1)
+
+[node name="Booster" type="RigidBody2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 83)
+amount = 20
+emission_shape = 2
+emission_sphere_radius = 35.0
+direction = Vector2(0, 1)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_aascv")
+color_ramp = SubResource("Gradient_mo50q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xutxf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4, -92, 15, -83, 64, -16, 99, 70, 83, 83, -2, 90, -82, 83, -97, 61, -57, -23, -6, -83)
