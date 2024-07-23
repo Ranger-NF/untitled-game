@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4gbwgn0grap6"]
+
+[ext_resource type="Texture2D" uid="uid://dbsaeh8qn1fey" path="res://Goals/Ring/ring.svg" id="1_qt31t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7308"]
+radius = 173.738
+
+[node name="Goal" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qt31t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w7308")

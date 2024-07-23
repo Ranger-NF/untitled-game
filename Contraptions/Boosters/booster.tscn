@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfcyhd2ipn5fy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfcyhd2ipn5fy"]
 
+[ext_resource type="Script" path="res://Contraptions/Boosters/booster.gd" id="1_2rdt2"]
 [ext_resource type="Texture2D" uid="uid://8qvojhm7mqj3" path="res://Contraptions/Boosters/booster.svg" id="1_xutxf"]
 
 [sub_resource type="Curve" id="Curve_aascv"]
@@ -12,9 +13,12 @@ offsets = PackedFloat32Array(0, 0.464286, 1)
 colors = PackedColorArray(1, 0.278431, 0, 1, 0.953102, 0.952191, 0, 1, 0, 0, 0, 1)
 
 [node name="Booster" type="RigidBody2D"]
+mass = 0.2
+script = ExtResource("1_2rdt2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 83)
+emitting = false
 amount = 20
 emission_shape = 2
 emission_sphere_radius = 35.0
@@ -31,3 +35,5 @@ texture = ExtResource("1_xutxf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(4, -92, 15, -83, 64, -16, 99, 70, 83, 83, -2, 90, -82, 83, -97, 61, -57, -23, -6, -83)
+
+[node name="LifetimeTimer" type="Timer" parent="."]

@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cbgpyi1soxeuc"]
+[gd_scene load_steps=4 format=3 uid="uid://cbgpyi1soxeuc"]
+
+[ext_resource type="PackedScene" uid="uid://kcf00xm1ngll" path="res://Player/player.tscn" id="1_e4v6f"]
+[ext_resource type="PackedScene" uid="uid://b0qxnrt0133g1" path="res://Environment/Ground/ground.tscn" id="2_m5mx5"]
+[ext_resource type="PackedScene" uid="uid://bfcyhd2ipn5fy" path="res://Contraptions/Boosters/booster.tscn" id="3_2bi31"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_e4v6f")]
+position = Vector2(604, 74)
+
+[node name="Ground" parent="." instance=ExtResource("2_m5mx5")]
+
+[node name="Booster" parent="." instance=ExtResource("3_2bi31")]
+position = Vector2(328, 90)
