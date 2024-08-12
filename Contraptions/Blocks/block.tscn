@@ -5,7 +5,9 @@
 [node name="Block" type="RigidBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_52o3m")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.6, 0.6)
 polygon = PackedVector2Array(119, -116, 135, -86, 136, 83, 119, 115, 96, 133, -90, 134, -123, 113, -138, 80, -137, -85, -113, -120, -88, -137, 92, -137)

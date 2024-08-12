@@ -1,43 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2ivf88dt41g2"]
 
-[sub_resource type="GDScript" id="GDScript_tg2ni"]
-script/source = "extends Control
-
-@onready var build_grid_node: GridContainer = $CanvasLayer/CenterContainer/GridContainer
-
-const GRID_CELL_TEXTURE: Texture2D = preload(\"res://UI/Builder/build_cell.svg\")
-
-var cell_id: int = 0 # Must be incremented (unique to each cell)
-
-func _ready() -> void:
-    init_grid(2, 3) # Rows x Cols
-
-func init_grid(num_of_rows: int, num_of_cols: int) -> void:
-    build_grid_node.columns = num_of_cols
-
-    var columns_populated: int = 0
-
-    while columns_populated < num_of_cols:
-        prepare_rows(num_of_rows)
-        columns_populated += 1
-
-func prepare_rows(num_of_rows: int):
-    var current_row_num: int = 0
-
-    while current_row_num < num_of_rows:
-        current_row_num += 1
-
-        var current_cell_id = cell_id
-        cell_id +=1
-        var new_cell_node: TextureButton = TextureButton.new()
-        new_cell_node.texture_normal = GRID_CELL_TEXTURE
-
-        build_grid_node.add_child(new_cell_node)
-        new_cell_node.pressed.connect(_on_build_cell_pressed.bind(new_cell_node, current_cell_id))
-
-func _on_build_cell_pressed(pressed_cell_node: CanvasItem, _pressed_cell_id: int) -> void:
-    pressed_cell_node.modulate.r = 0
-"
+[ext_resource type="Script" path="res://UI/Builder/builder_ui.gd" id="1_drgyr"]
 
 [node name="BuilderUI" type="Control"]
 layout_mode = 3
@@ -46,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_tg2ni")
+script = ExtResource("1_drgyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -59,6 +22,16 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="ControlPanel" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer/ControlPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Start"
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -67,7 +40,7 @@ size_flags_stretch_ratio = 3.0
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="ItemPanel" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
