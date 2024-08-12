@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_drgyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15

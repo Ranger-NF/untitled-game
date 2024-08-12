@@ -1,34 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbgpyi1soxeuc"]
+[gd_scene load_steps=3 format=3 uid="uid://cbgpyi1soxeuc"]
 
-[ext_resource type="PackedScene" uid="uid://cy2ktqpwuiny3" path="res://Contraptions/Blocks/block.tscn" id="1_5y1am"]
 [ext_resource type="PackedScene" uid="uid://b0qxnrt0133g1" path="res://Environment/Ground/ground.tscn" id="2_m5mx5"]
-[ext_resource type="PackedScene" uid="uid://bfcyhd2ipn5fy" path="res://Contraptions/Boosters/booster.tscn" id="3_2bi31"]
 [ext_resource type="PackedScene" uid="uid://b2ivf88dt41g2" path="res://UI/Builder/builder_ui.tscn" id="4_hpjxr"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Block" parent="." instance=ExtResource("1_5y1am")]
-position = Vector2(502, 83)
-mass = 0.1
-
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2(427, 85)
-node_a = NodePath("../Block")
-node_b = NodePath("../Booster")
-disable_collision = false
-
-[node name="Booster" parent="." instance=ExtResource("3_2bi31")]
-position = Vector2(324, 82)
-
-[node name="PinJoint2D2" type="PinJoint2D" parent="."]
-position = Vector2(586, 107)
-node_a = NodePath("../Block")
-node_b = NodePath("../Booster2")
-disable_collision = false
-
-[node name="Booster2" parent="." instance=ExtResource("3_2bi31")]
-position = Vector2(690, 86)
+[node name="BuilderUI" parent="." instance=ExtResource("4_hpjxr")]
 
 [node name="Ground" parent="." instance=ExtResource("2_m5mx5")]
-
-[node name="BuilderUI" parent="." instance=ExtResource("4_hpjxr")]
